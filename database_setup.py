@@ -39,8 +39,8 @@ class Book(Base):
 
     id = Column(Integer, primary_key=True)
     title = Column(String(250), nullable=False)
-    author = Column(String(250), nullable=False)
     genre = Column(String(250), nullable=False)
+    ISBN = Column(Integer, nullable=False)
 
     author_id = Column(Integer, ForeignKey('author.id'))
     author = relationship(Author, backref=backref('book'), cascade='all, delete')
@@ -52,6 +52,7 @@ class Book(Base):
             'title': self.title,
             'author': self.author,
             'genre': self.genre,
+            'ISBN': self.ISBN,
             'id': self.id,
         }
     
