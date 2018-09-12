@@ -34,6 +34,24 @@ class Author(Base):
         }
 
 
+
+class Publisher(Base):
+    __tablename__ = 'publisher'
+
+    id = Column(Integer, primary_key=True)
+    name = Column(String(250), nullable=False)
+    address = Column(String(250), nullable=False)
+
+    @property
+    def serialize(self):
+        """Return object data in easily serializeable format"""
+        return {
+            'name': self.name,
+            'address': self.address,
+            'id': self.id,
+        }
+
+
 class Book(Base):
     __tablename__ = 'book'
 
@@ -41,6 +59,7 @@ class Book(Base):
     title = Column(String(250), nullable=False)
     genre = Column(String(250), nullable=False)
     ISBN = Column(Integer, nullable=False)
+    year = Column(Integer, nullable=False)
 
     author_id = Column(Integer, ForeignKey('author.id'))
     author = relationship(Author, backref=backref('book'), cascade='all, delete')
@@ -53,11 +72,33 @@ class Book(Base):
             'author': self.author,
             'genre': self.genre,
             'ISBN': self.ISBN,
+            'year': self.year,
             'id': self.id,
         }
     
 
 """
+class Catalog(Base):
+    __tableName__ = 'catalog'
+
+    id = Column(Integer, primary_key=True)
+    numCopies = Column(Integer, nullable=False)
+    available = Column(Boolean, nullable=False)
+
+    book_id = Column(Integer, ForiengKey('book.id'))
+    book = relationship(Book, backref=backref('catalog'), cascade'all, delete')
+
+
+    @property
+    def serialize(self):
+        """'Return object data in easily serializeable format'"""
+        return {
+            'numCopies': self.numCopies,
+            'available: self.available,
+            'id': self.id,
+        }
+
+
 class BorrowedBy(Base):
     __tableName__ = 'borrowedBy'
 
