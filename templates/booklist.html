@@ -1,11 +1,20 @@
 <html>
     <body>
-        {% for book in books %}
-        <div>
-            {{book.title}}
-            {{book.author_id}}
-            {{book.genre}}
+        <style>
+            .bookList {
+                border: solid;
+            }
+        </style>
+        <div class="bookList">
+            <h1> Title | Author </h1>
         </div>
+        {% for book in books %}
+        <div class="bookList">
+            <!--<img src="{{book.imgUrl}}">
+            <h2> ISBN: {{book.ISBN}} </h2>
+            <h2> Genre: {{book.genre}} </h2>-->
+            <h2> {{book.title}} | {{book.author_id}} </h2>
+        </div>  
         {% endfor %}
     </body>
 </html>

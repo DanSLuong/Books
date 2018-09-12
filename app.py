@@ -25,10 +25,16 @@ def home():
 
 
 @app.route('/books')
-def books():
+def showBooks():
     books = session.query(Book).all()
-    return render_template('booklist.html', books=books)
+    authors = session.query(Author).all()
+    return render_template('booklist.html', books=books, authors=authors)
 
+
+@app.route('/books/<int:book_id>/')
+@app.route('/books/<int:book_id>/info')
+def showBookInfo():
+    
 
 if __name__ == '__main__':
     app.secret_key = 'super_secret_key'

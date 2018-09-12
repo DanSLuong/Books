@@ -60,6 +60,7 @@ class Book(Base):
     genre = Column(String(250), nullable=False)
     ISBN = Column(Integer, nullable=False)
     year = Column(Integer, nullable=False)
+    imgUrl = Column(String(250))
 
     author_id = Column(Integer, ForeignKey('author.id'))
     author = relationship(Author, backref=backref('book'), cascade='all, delete')
@@ -73,6 +74,7 @@ class Book(Base):
             'genre': self.genre,
             'ISBN': self.ISBN,
             'year': self.year,
+            'imgUrl': self.imgUrl,
             'id': self.id,
         }
     
