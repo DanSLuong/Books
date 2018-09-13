@@ -17,6 +17,17 @@ Base.metadata.bind = engine
 DBSession = sessionmaker(bind=engine)
 session = DBSession()
 
+# Route for handling the login page logic
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    error = None
+    if request.method == 'POST':
+        if request.form['username'] != 'admin' or request.form['password'] != 'admin':
+            error = 'Invalid Credentials. Please try again.'
+        else:
+            return redirect(url_for('home'))
+    return render_template('login.html', error=error)
+
 
 @app.route('/')
 @app.route('/home/')
@@ -34,7 +45,9 @@ def showBooks():
 @app.route('/books/<int:book_id>/')
 @app.route('/books/<int:book_id>/info')
 def showBookInfo():
-    
+    books = session.query(Book).all()
+    authors = session.query(Author).all()
+    return render_template('bookinfo.html', books=books, authors=authors)
 
 if __name__ == '__main__':
     app.secret_key = 'super_secret_key'

@@ -13,7 +13,7 @@
             <!--<img src="{{book.imgUrl}}">
             <h2> ISBN: {{book.ISBN}} </h2>
             <h2> Genre: {{book.genre}} </h2>-->
-            <h2> {{book.title}} | {{book.author_id}} </h2>
+            <h2> <a href="{{url_for('showBookInfo', book_id={{book.id}})}}">{{book.title}}</a> | {{book.author_id}} </h2>
         </div>  
         {% endfor %}
     </body>
