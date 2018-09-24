@@ -37,17 +37,24 @@ def home():
 
 @app.route('/books')
 def showBooks():
-    books = session.query(Book).all()
     authors = session.query(Author).all()
-    return render_template('booklist.html', books=books, authors=authors)
+    books = session.query(Book).filter_by(author_id=author_id).all()
+    return render_template('booklist.html', books=books)
 
 
 @app.route('/books/<int:book_id>/')
 @app.route('/books/<int:book_id>/info')
-def showBookInfo():
-    books = session.query(Book).all()
-    authors = session.query(Author).all()
+def showBookInfo(book_id, author_id):
+    books = session.query(Book).filter_by(id=book_id)
+    authors = session.query(Author).filter_by(id=author_id).one()
     return render_template('bookinfo.html', books=books, authors=authors)
+
+
+@app.route('/authors/<int:author_id>/')
+def showAuthorInfo(author_id):
+    authors = session.query(Author).all()
+    return render_template('authorinfo.html', authors=authors)
+
 
 if __name__ == '__main__':
     app.secret_key = 'super_secret_key'
