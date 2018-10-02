@@ -28,10 +28,21 @@
             text-align: center;
         }
 
+        .bookList {
+            width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
         .bookList table {
             text-align: center;
             margin-left: auto;
             margin-right: auto;
+        }
+
+        .bookImg {
+            width: 1%;
+            height: 1%;
         }
     </style>
 
@@ -42,26 +53,37 @@
 
         <!-- Links -->
         <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link" href="{{url_for('showBooks')}}"> Books </a>
-            </li>
-            <!--
-            <li class="nav-item">
-                <a class="nav-link" href="#">Link 2</a>
-            </li>
-            
-            // Dropdown
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-                    Dropdown link
+                <a class="nav-link dropdown-toggle" href="{{url_for('showBooks')}}" id="navbardrop" data-toggle="dropdown">
+                    Books
                 </a>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Link 1</a>
-                    <a class="dropdown-item" href="#">Link 2</a>
-                    <a class="dropdown-item" href="#">Link 3</a>
+                    <a class="dropdown-item" href="{{url_for('showBooks')}}"> Books </a>
+                    <a class="dropdown-item" href="#"> Authors </a>
+                    <a class="dropdown-item" href="#"> Publishers </a>
+                </div>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="#"> About </a>
+            </li>
+
+            <!--
+                <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="{{url_for('showBooks')}}" id="navbardrop" data-toggle="dropdown">
+                    Account Info
+                </a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#"> Account Info </a>
+                    <a class="dropdown-item" href="#"> Rentals </a>
+                    <a class="dropdown-item" href="#"> Booklist </a>
+                    <a class="dropdown-item" href="#"> Logout </a>
                 </div>
             </li>
             -->
+            <li class="nav-item">
+                <a class="nav-link" href="#"> Login </a>
+            </li>
         </ul>
     </nav>
     <br>
@@ -70,7 +92,7 @@
     <div class="bookList">
         <table>
             <tr>
-                <th> Picture </th>
+                <th class="bookImg"> Picture </th>
                 <th> Title </th>
                 <th> Author </th>
                 <th> Genre </th>
@@ -79,7 +101,7 @@
             <tr>
                 <td> <img src="{{book.imgUrl}}"> </td>
                 <td> {{book.title}} </td>
-                <td> {{book.author_id}} </td>
+                <td> book.author_id </td>
                 <td> {{book.genre}} </td>
             </tr>
             {% endfor %}

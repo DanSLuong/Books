@@ -37,8 +37,9 @@ def home():
 
 @app.route('/books')
 def showBooks():
-    authors = session.query(Author).all()
-    books = session.query(Book).filter_by(author_id=author_id).all()
+    books = session.query(Book).all()
+    # authors = session.query(Author).all()
+    # books = session.query(Book).filter_by(author_id=author_id).all()
     return render_template('booklist.html', books=books)
 
 
