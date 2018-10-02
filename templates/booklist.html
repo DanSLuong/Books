@@ -1,15 +1,6 @@
-<html>
-
-<head>
-    <title> Books List Page </title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-</head>
-
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
 <body>
     <style>
         table,
@@ -47,48 +38,6 @@
     </style>
 
 
-    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-        <!-- Brand -->
-        <a class="navbar-brand" href="{{url_for('home')}}"> Home </a>
-
-        <!-- Links -->
-        <ul class="navbar-nav">
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="{{url_for('showBooks')}}" id="navbardrop" data-toggle="dropdown">
-                    Books
-                </a>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href="{{url_for('showBooks')}}"> Books </a>
-                    <a class="dropdown-item" href="#"> Authors </a>
-                    <a class="dropdown-item" href="#"> Publishers </a>
-                </div>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link" href="#"> About </a>
-            </li>
-
-            <!--
-                <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="{{url_for('showBooks')}}" id="navbardrop" data-toggle="dropdown">
-                    Account Info
-                </a>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#"> Account Info </a>
-                    <a class="dropdown-item" href="#"> Rentals </a>
-                    <a class="dropdown-item" href="#"> Booklist </a>
-                    <a class="dropdown-item" href="#"> Logout </a>
-                </div>
-            </li>
-            -->
-            <li class="nav-item">
-                <a class="nav-link" href="#"> Login </a>
-            </li>
-        </ul>
-    </nav>
-    <br>
-
-
     <div class="bookList">
         <table>
             <tr>
@@ -116,4 +65,5 @@
     </div>
 </body>
 
-</html>
+{% include "footer.html" %}
+{% endblock %}
