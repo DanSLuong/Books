@@ -1,0 +1,17 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+
+<div>
+    {% for author in authors %}
+    <table>
+        <tr>
+            <td> {{author.firstName}} </td>
+            <td> {{author.lastName}} </td>
+        </tr>
+    </table>
+    {% endfor %}
+</div>
+
+{% endblock %}
+{% include "footer.html" %}

@@ -1,69 +1,53 @@
 {% extends "main.html" %}
 {% block content %}
 {% include "header.html" %}
-<body>
-    <style>
-        table,
-        th,
-        td {
-            border: 1px solid black;
-            border-collapse: collapse;
-        }
 
-        th,
-        td {
-            padding: 5px;
-        }
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="static\booklist.css">
 
-        th {
-            text-align: center;
-        }
+<div class="bookList">
 
-        .bookList {
-            width: 90%;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .bookList table {
-            text-align: center;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .bookImg {
-            width: 1%;
-            height: 1%;
-        }
-    </style>
-
-
-    <div class="bookList">
-        <table>
-            <tr>
-                <th class="bookImg"> Picture </th>
-                <th> Title </th>
-                <th> Author </th>
-                <th> Genre </th>
-            </tr>
-            {% for book in books %}
-            <tr>
-                <td> <img src="{{book.imgUrl}}"> </td>
-                <td> {{book.title}} </td>
-                <td> book.author_id </td>
-                <td> {{book.genre}} </td>
-            </tr>
-            {% endfor %}
-            <!--
-            {% for author in authors %}
-            <tr>
-                <td> {{author.firstName}} </td>
-            </tr>
-            {% endfor %}
-            -->
-        </table>
+    <!--
+    {% for book in books %}
+    <div>
+        <a class="image" href="{{url_for('bookInfo', book_id = book.id)}}">
+            <img src="{{book.imgUrl}}">
+        </a>
+        <div class="overlay">
+            <div class="text">
+                <a href="{{url_for('bookInfo', book_id = book.id)}}"> {{book.title}} </a>
+                {{book.author_id}}
+                {{book.genre}}
+            </div>
+        </div>
     </div>
-</body>
+    {% endfor %}
+    -->
+
+    <table>
+        <tr>
+            <th class="bookImg"> Picture </th>
+            <th> Title </th>
+            <th> Author </th>
+            <th> Genre </th>
+        </tr>
+        {% for book in books %}
+        <tr>
+            <td> <a href="{{url_for('bookInfo', book_id = book.id)}}"> <img src="{{book.imgUrl}}"> </a> </td>
+            <td> <a href="{{url_for('bookInfo', book_id = book.id)}}"> {{book.title}} </a></td>
+            <td> {{book.author_id}} </td>
+            <td> {{book.genre}} </td>
+        </tr>
+        {% endfor %}
+
+        {% for author in authors %}
+        <tr>
+            <td> {{author.firstName}} </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+</div>
 
 {% include "footer.html" %}
 {% endblock %}

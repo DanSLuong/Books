@@ -1,0 +1,34 @@
+/*
+table,
+th,
+td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    padding: 5px;
+}
+
+th {
+    text-align: center;
+}
+
+.bookList {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.bookList table {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.bookImg {
+    width: 1%;
+    height: 1%;
+}
+*/

@@ -1,0 +1,35 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+
+<style>
+    .bookBlock {
+        width: 60%;
+        border: 5px solid black;
+        padding: 10px;
+        overflow: hidden;
+    }
+
+    .bookBlock img {
+        float: left;
+        margin-right: 5%;
+    }
+
+</style>
+<div>
+    {% for book in books %}
+    <div class="bookBlock">
+        <img src="{{book.imgUrl}}">
+        <div class="infoText">
+            <div> Title: {{book.title}} </div>
+            <div> Author: {{book.author_id}} </div>
+            <div> Genre: {{book.genre}} </div>
+            <div> ISBN: {{book.ISBN}} </div>
+        </div>
+    </div>
+
+    {% endfor %}
+</div>
+
+
+{% endblock %}
