@@ -35,11 +35,25 @@ def logout():
     login_session['logged_in'] = False
     return redirect(url_for('login'))
 
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    if request.method == 'POST':
+        newUser = User(username=request.form['username'],
+                        password=request.form['password'],
+                        email=request.form['email'])
+        session.add(newUser)
+        session.commit()
+        return redirect(url_for('login.html'))
+    return render_template('register.html')
+
 
 @app.route('/')
 @app.route('/home/')
 def home():
-    return render_template('home.html')
+    if 'username' not in login_session:
+        return render_template('home.html')
+    else:
+        return render_template('home.html')
 
 
 @app.route('/books')
