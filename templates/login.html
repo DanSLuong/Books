@@ -1,31 +1,27 @@
+<!-- Takes data from parent first -->
 {% extends "main.html" %}
-{% block content %}
-{% include "header.html" %}
 
-<head>
-    <title> Login Page </title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="static/boostrap.min.css" rel="stylesheet" media="screen">
-    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='form.css') }}">
-</head>
-
-<body>
-    <div class="container">
-        <div class="form-style-6">
-            <h1> Login </h1>
-            <form action="#" method="post">
-                <input type="text" name="username" placeholder="Username" value="{{ request.form.username }}"><br>
-                <input type="password" name="password" placeholder="Password" value="{{ request.form.password }}"><br>
-                <input class="btn btn-default" type="submit" value="Login"><br>
-                <a href="{{ url_for('register')}}"> Register </a>
-            </form>
-        </div>
-
-        {% if error %}
-        <p class="error"><strong> Error: </strong> {{ error }} </p>
-        {% endif %}
-    </div>
-</body>
-
+{% block title %}Login{% endblock %}
+{% block head %}
+<!-- {{ super() }} is to render the contents of parent head -->
+{{ super() }}
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='form.css') }}">
 {% endblock %}
-{% include "footer.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="form-style-6">
+        <h1> Login </h1>
+        <form action="#" method="post">
+            <input type="text" name="username" placeholder="Username" value="{{ request.form.username }}"><br>
+            <input type="password" name="password" placeholder="Password" value="{{ request.form.password }}"><br>
+            <input class="btn btn-default" type="submit" value="Login"><br>
+            <a href="{{ url_for('register')}}"> Register </a>
+        </form>
+    </div>
+
+    {% if error %}
+    <p class="error"><strong> Error: </strong> {{ error }} </p>
+    {% endif %}
+</div>
+{% endblock %}

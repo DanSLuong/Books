@@ -1,22 +1,22 @@
+<!-- Takes data from parent first -->
 {% extends "main.html" %}
+
+{% block title %}User Registration{% endblock %}
+{% block head %}
+<!-- {{ super() }} is to render the contents of parent head -->
+{{ super() }}
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='form.css') }}">
+{% endblock %}
+
 {% block content %}
-{% include "header.html" %}
-
-<head>
-    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='form.css') }}">
-</head>
-
-<body>
-    <div class="form-style-6">
-        <h1> Register </h1>
-        <form action="#" method="post">
-            <input type="text" name="username" placeholder="Username"><br>
-            <input type="password" name="password" placeholder="Password"><br>
-            <input type="email" name="email" placeholder="user@email.com"><br>
-            <input type="submit" value="submit"><br>
-            <a href="{{url_for('login')}}"> Cancel </a>
-        </form>
-    </div>
-</body>
-
+<div class="form-style-6">
+    <h1> Register </h1>
+    <form action="#" method="post">
+        <input type="text" name="username" placeholder="Username"><br>
+        <input type="password" name="password" placeholder="Password"><br>
+        <input type="email" name="email" placeholder="user@email.com"><br>
+        <input class="btn btn-default" type="submit" value="submit"><br>
+        <a href="{{url_for('login')}}"> Cancel </a>
+    </form>
+</div>
 {% endblock %}

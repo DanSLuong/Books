@@ -1,7 +1,7 @@
 from flask import (Flask, render_template, request, redirect, jsonify, url_for, flash, g)
 from sqlalchemy import create_engine, asc
 from sqlalchemy.orm import sessionmaker
-from database_setup import Base, Author, Book
+from database_setup import Base, User, Author, Book
 from flask import session as login_session
 import httplib2
 import json
@@ -43,7 +43,7 @@ def register():
                         email=request.form['email'])
         session.add(newUser)
         session.commit()
-        return redirect(url_for('login.html'))
+        return redirect(url_for('login'))
     return render_template('register.html')
 
 

@@ -1,7 +1,9 @@
+<!-- Takes data from parent first -->
 {% extends "main.html" %}
-{% block content %}
-{% include "header.html" %}
 
+{% block title %}Author List{% endblock %}
+
+{% block content %}
 <div>
     {% for author in authors %}
     <table>
@@ -12,6 +14,4 @@
     </table>
     {% endfor %}
 </div>
-
 {% endblock %}
-{% include "footer.html" %}

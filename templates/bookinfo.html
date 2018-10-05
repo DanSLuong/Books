@@ -1,21 +1,14 @@
+<!-- Takes data from parent first -->
 {% extends "main.html" %}
+
+{% block title %}Book Info{% endblock %}
+{% block head %}
+<!-- {{ super() }} is to render the contents of parent head -->
+{{ super() }}
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='bookinfo.css') }}">
+{% endblock %}
+
 {% block content %}
-{% include "header.html" %}
-
-<style>
-    .bookBlock {
-        width: 60%;
-        border: 5px solid black;
-        padding: 10px;
-        overflow: hidden;
-    }
-
-    .bookBlock img {
-        float: left;
-        margin-right: 5%;
-    }
-
-</style>
 <div>
     {% for book in books %}
     <div class="bookBlock">
@@ -27,9 +20,6 @@
             <div> ISBN: {{book.ISBN}} </div>
         </div>
     </div>
-
     {% endfor %}
 </div>
-
-
 {% endblock %}
