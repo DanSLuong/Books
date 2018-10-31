@@ -9,7 +9,7 @@
 {% endblock %}
 
 {% block content %}
-<div class="container">
+<div class="login-form">
     <div class="form-style-6">
         <h1> Login </h1>
         <form action="#" method="post">
@@ -19,9 +19,9 @@
             <a href="{{ url_for('register')}}"> Register </a>
         </form>
     </div>
-
-    {% if error %}
-    <p class="error"><strong> Error: </strong> {{ error }} </p>
-    {% endif %}
 </div>
+
+{% if error %}
+<p class="error"><strong> Error: </strong> {{ error }} </p>
+{% endif %}
 {% endblock %}

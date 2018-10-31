@@ -1,39 +1,19 @@
-/*
-table,
-th,
-td {
-    border: 1px solid black;
-    border-collapse: collapse;
-}
 
-th,
-td {
-    padding: 5px;
-}
-
-th {
-    text-align: center;
-}
-
-.bookList {
-    width: 90%;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.bookList table {
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.bookImg {
-    width: 1%;
-    height: 1%;
-}
-*/
 body {
-    background-color: black;
     width: 100%;
     height: 100%;
+}
+
+.container {
+    text-align: center;
+    width: 100%;
+    height: 100%;
+}
+
+footer {
+    background-color: #343a40;
+    position: fixed;
+    bottom: 0px;
+    text-align: center;
+    width: 100%;
 }
