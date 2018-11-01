@@ -11,7 +11,21 @@
 {% block content %}
 <div class="bookList">
 
+    <div class="row">
+        <div class="col-sm-12" style="border: solid;">
+            <div class="row">
+                {% for book in books %}
+                <div class="col-md-2 col-sm-4 col-xs-6">
+                    <div class="internalBox">
+                        <img src="{{book.imgUrl}}">
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
 
+    <!--
     <table>
         <tr>
             <th class="bookImg"> Picture </th>
@@ -34,5 +48,6 @@
         </tr>
         {% endfor %}
     </table>
+    -->
 </div>
 {% endblock %}
