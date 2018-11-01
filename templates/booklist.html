@@ -16,8 +16,12 @@
             <div class="row">
                 {% for book in books %}
                 <div class="col-md-2 col-sm-4 col-xs-6">
-                    <div class="internalBox">
-                        <img src="{{book.imgUrl}}">
+                    <img class="internalBox" src="{{book.imgUrl}}">
+                    <div class="overlay">
+                        <div class="text"> {{book.title}} </div>
+                        <a href="{{url_for('bookInfo', book_id = book.id)}}">
+                            <div class="bookInfo"> View </div>
+                        </a>
                     </div>
                 </div>
                 {% endfor %}
@@ -25,29 +29,5 @@
         </div>
     </div>
 
-    <!--
-    <table>
-        <tr>
-            <th class="bookImg"> Picture </th>
-            <th> Title </th>
-            <th> Author </th>
-            <th> Genre </th>
-        </tr>
-        {% for book in books %}
-        <tr>
-            <td> <a href="{{url_for('bookInfo', book_id = book.id)}}"> <img src="{{book.imgUrl}}"> </a> </td>
-            <td> <a href="{{url_for('bookInfo', book_id = book.id)}}"> {{book.title}} </a></td>
-            <td> {{book.author_id}} </td>
-            <td> {{book.genre}} </td>
-        </tr>
-        {% endfor %}
-
-        {% for author in authors %}
-        <tr>
-            <td> {{author.firstName}} </td>
-        </tr>
-        {% endfor %}
-    </table>
-    -->
 </div>
 {% endblock %}

@@ -17,3 +17,13 @@ footer {
     text-align: center;
     width: 100%;
 }
+
+footer a {
+    text-decoration: none;
+    color: white;
+}
+
+footer a:hover {
+    text-decoration: none;
+    color: gray;
+}

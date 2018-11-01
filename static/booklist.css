@@ -1,8 +1,62 @@
 .internalBox {
     margin-top: 5px;
     margin-bottom: 5px;
+    height: 250px;
+    width: 150px;
 }
 
-.internalBox img {
+.overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin-left: 19px;
+    margin-top: 5px;
+    margin-bottom: 5px;
     height: 250px;
+    width: 150px;
+    opacity: 0;
+    transition: .5s ease;
+    background-color: gray;
+}
+
+.container:hover .overlay {
+    opacity: .85;
+}
+
+.overlay a {
+    color: white;
+}
+
+.text {
+    color: white;
+    font-size: 20px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 90%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.bookInfo {
+    position: absolute;
+    border: solid white;
+    bottom: 0px;
+    width: 95%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.bookInfo:hover {
+    position: absolute;
+    border: solid white;
+    background-color: #A9A9A9;
+    bottom: 0px;
+    width: 90%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
 }
