@@ -10,7 +10,14 @@
 
 {% block content %}
 <div class="bookList">
+    {% set x = 1 %}
+    <select name="viewType">
+        <option value="select"> {% set x = 0 %} Select View </option>
+        <option value="thumbnails"> {% set x = 1 %} Thumbnails </option>
+        <option value="listView"> {% set x = 2 %} List </option>
+    </select>
 
+    {% if x==1 or x==0 %}
     <div class="row">
         <div class="col-sm-12" style="border: solid;">
             <div class="row">
@@ -28,6 +35,32 @@
             </div>
         </div>
     </div>
+    {% endif %}
+    
+    {% if x==2 %}
+    <div class="row">
+        <div class="col-sm-12" style="border: solid;">
+            <div class="row">
+                <table>
+                    <tr>
+                        <th>Title </th>
+                        <th>Author</th>
+                        <th>Genre</th>
+                    </tr>
+                    {% for book in books %}
+
+                    <tr>
+                        <td>{{book.title}}</td>
+                        <td>{{book.genre}}</td>
+                        <td>{{book.author_id}}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+
+            </div>
+        </div>
+    </div>
+    {% endif %}
 
 </div>
 {% endblock %}
