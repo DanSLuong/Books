@@ -5,6 +5,17 @@
 
 {% block content %}
 <div>
-    <h1> This will be the page about the authors. </h1>
+    <style>
+        .profilePic {
+            width: 300px;
+        }
+    </style>
+    {% for author in authors %}
+    <div>
+        <img src="{{author.profilePic}}" class="profilePic">
+        <div> Name: {{author.firstName}} {{author.lastName}} </div>
+        <div> Date of Birth: {{author.birthday}} </div>
+    </div>
+    {% endfor %}
 </div>
 {% endblock %}

@@ -10,14 +10,31 @@
 
 {% block content %}
 <div class="bookList">
-    {% set x = 1 %}
-    <select name="viewType">
-        <option value="select"> {% set x = 0 %} Select View </option>
-        <option value="thumbnails"> {% set x = 1 %} Thumbnails </option>
-        <option value="listView"> {% set x = 2 %} List </option>
-    </select>
+    <!--JINJA macro-->
+    <!--
+    {% macro viewType(name, value='', class='', id='') -%}
+    {% set views = ["Default", "Thumbnail", "List"] %}
 
-    {% if x==1 or x==0 %}
+    <select name="{{name}}" class="{{class}}" id="{{id}}">
+        {% for view in views %}
+        <option value="{{view}}" {{'selected' if value==view else ''}}> {{view}} </option>
+        {% endfor %}
+    </select>
+    {%- endmacro %}
+    -->
+    <!--
+    <select name="viewType">
+        <option value="0" {% if viewType == 0 %} selected="selected" {% endif %}>  Select View </option>
+        <option value="1" {% if viewType == 1 %} selected="selected" {% endif %}> Thumbnails </option>
+        <option value="2" {% if viewType == 2 %} selected="selected" {% endif %}> List </option>
+    </select>
+    -->
+    <select name="viewType">
+            <option value="0"> Select View </option>
+            <option value="1"> Thumbnails </option>
+            <option value="2"> List </option>
+        </select>
+        
     <div class="row">
         <div class="col-sm-12" style="border: solid;">
             <div class="row">
@@ -35,9 +52,7 @@
             </div>
         </div>
     </div>
-    {% endif %}
-    
-    {% if x==2 %}
+<!--
     <div class="row">
         <div class="col-sm-12" style="border: solid;">
             <div class="row">
@@ -60,7 +75,7 @@
             </div>
         </div>
     </div>
-    {% endif %}
+-->
 
 </div>
 {% endblock %}

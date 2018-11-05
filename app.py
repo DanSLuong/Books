@@ -78,7 +78,7 @@ def bookInfo(book_id): # , author_id):
 
 @app.route('/authors/<int:author_id>/')
 def authorInfo(author_id):
-    authors = session.query(Author).all()
+    authors = session.query(Author).filter_by(id=author_id)
     return render_template('authorinfo.html', authors=authors)
 
 @app.route('/about')

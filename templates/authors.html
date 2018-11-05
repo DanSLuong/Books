@@ -5,13 +5,16 @@
 
 {% block content %}
 <div>
+    
+<ul>
     {% for author in authors %}
-    <table>
-        <tr>
-            <td> {{author.firstName}} </td>
-            <td> {{author.lastName}} </td>
-        </tr>
-    </table>
+    <li>
+        <a href="{{url_for('authorInfo', author_id = author.id)}}">
+        {{author.lastName}}, {{author.firstName}}
+        </a>
+    </li>
     {% endfor %}
+</ul>
+    
 </div>
 {% endblock %}

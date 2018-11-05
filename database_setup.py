@@ -34,6 +34,8 @@ class Author(Base):
     id = Column(Integer, primary_key=True)
     firstName = Column(String(250), nullable=False)
     lastName = Column(String(250), nullable=False)
+    profilePic = Column(String(250), nullable=True)
+    birthday = Column(String(250), nullable=True)
 
     @property
     def serialize(self):
@@ -41,6 +43,8 @@ class Author(Base):
         return {
             'firstName': self.firstName,
             'lastName': self.lastName,
+            'profilePic': self.profilePic,
+            'birthday': self.birthday,
             'id': self.id,
         }
 
@@ -70,6 +74,8 @@ class Book(Base):
     title = Column(String(250), nullable=False)
     genre = Column(String(250), nullable=False)
     ISBN = Column(Integer, nullable=False)
+    publisher = Column(String(250), nullable=True)
+    pages = Column(Integer, nullable=True)
     year = Column(Integer, nullable=False)
     imgUrl = Column(String(250))
 
@@ -84,6 +90,8 @@ class Book(Base):
             'author': self.author,
             'genre': self.genre,
             'ISBN': self.ISBN,
+            'publisher': self.publisher,
+            'pages': self.pages,
             'year': self.year,
             'imgUrl': self.imgUrl,
             'id': self.id,
