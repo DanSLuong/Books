@@ -15,6 +15,14 @@
         <img src="{{author.profilePic}}" class="profilePic">
         <div> Name: {{author.firstName}} {{author.lastName}} </div>
         <div> Date of Birth: {{author.birthday}} </div>
+        <br>
+        <br>
+        <div>
+            <h3> Books written: </h3>
+            {% for book in books %}
+            <div> {{book.title}} </div>
+            {% endfor %}
+        </div>
     </div>
     {% endfor %}
 </div>

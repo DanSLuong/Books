@@ -10,16 +10,14 @@
 
 {% block content %}
 <div>
-    {% for book in books %}
     <div class="bookBlock">
-        <img src="{{book.imgUrl}}">
+        <img src="{{books.imgUrl}}">
         <div class="infoText">
-            <div> Title: {{book.title}} </div>
-            <div> Author: {{book.author_id}} </div>
-            <div> Genre: {{book.genre}} </div>
-            <div> ISBN: {{book.ISBN}} </div>
+            <div> Title: {{books.title}} </div>
+            <div> Genre: {{books.genre}} </div>
+            <div> ISBN: {{books.ISBN}} </div>
+            <div> Author: {{author.firstName}} {{author.lastName}} </div>
         </div>
     </div>
-    {% endfor %}
 </div>
 {% endblock %}

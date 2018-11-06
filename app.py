@@ -70,16 +70,17 @@ def authors():
 
 @app.route('/books/<int:book_id>/')
 @app.route('/books/<int:book_id>/info')
-def bookInfo(book_id): # , author_id):
-    books = session.query(Book).filter_by(id=book_id)
-    # authors = session.query(Author).filter_by(id=author_id).one()
-    return render_template('bookinfo.html', books=books)# , authors=authors)
+def bookInfo(book_id):
+    books = session.query(Book).filter_by(id=book_id).one()
+    author = session.query(Author).filter_by(id=books.author_id).one()
+    return render_template('bookinfo.html', books=books, author=author)
 
 
 @app.route('/authors/<int:author_id>/')
 def authorInfo(author_id):
     authors = session.query(Author).filter_by(id=author_id)
-    return render_template('authorinfo.html', authors=authors)
+    books = session.query(Book).filter_by(author_id=author_id)
+    return render_template('authorinfo.html', authors=authors, books=books)
 
 @app.route('/about')
 def about():

@@ -40,7 +40,9 @@
             <div class="row">
                 {% for book in books %}
                 <div class="col-md-2 col-sm-4 col-xs-6">
-                    <img class="internalBox" src="{{book.imgUrl}}">
+                    <div class="internalBox">
+                        <img src="{{book.imgUrl}}">
+                    </div>
                     <div class="overlay">
                         <div class="text"> {{book.title}} </div>
                         <a href="{{url_for('bookInfo', book_id = book.id)}}">

@@ -1,0 +1,19 @@
+<!-- Takes data from parent first -->
+{% extends "main.html" %}
+
+{% block title %} List of Publishers {% endblock %}
+
+{% block content %}
+<div>
+
+    <div>
+        {% for publisher in publishers %}
+        <a href="{{url_for('publisherInfo', publisher_id = publisher.id)}}">
+            {{publisher.lastName}}, {{publisher.firstName}}
+        </a>
+        <br>
+        {% endfor %}
+    </div>
+
+</div>
+{% endblock %}
