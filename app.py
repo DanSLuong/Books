@@ -58,27 +58,31 @@ def home():
 
 @app.route('/books')
 def books():
+    # Query for all books in Book table
     books = session.query(Book).all()
-    # authors = session.query(Author).all()
-    # books = session.query(Book).filter_by(author_id=author_id).all()
     return render_template('booklist.html', books=books)
 
 @app.route('/authors')
 def authors():
+    # Query for all authors in Author table
     authors = session.query(Author).all()
     return render_template('authors.html', authors=authors)
 
 @app.route('/books/<int:book_id>/')
 @app.route('/books/<int:book_id>/info')
 def bookInfo(book_id):
+    # Query for books.id==book_id
     books = session.query(Book).filter_by(id=book_id).one()
+    # Query for author.id==books.author_id
     author = session.query(Author).filter_by(id=books.author_id).one()
     return render_template('bookinfo.html', books=books, author=author)
 
 
 @app.route('/authors/<int:author_id>/')
 def authorInfo(author_id):
+    # Query for authors.id==author_id
     authors = session.query(Author).filter_by(id=author_id)
+    # Query for books.author_id==author_id
     books = session.query(Book).filter_by(author_id=author_id)
     return render_template('authorinfo.html', authors=authors, books=books)
 
