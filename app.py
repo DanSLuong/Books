@@ -21,12 +21,17 @@ session = DBSession()
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     error = None
+    users = session.query(User).all()
     if request.method == 'POST':
-        if request.form['username'] != 'admin' or request.form['password'] != 'admin':
-            error = 'Invalid Credentials. Please try again.'
-        else:
-            login_session['logged_in'] = True
-            return redirect(url_for('home'))
+        # if request.form['username'] != 'admin' or request.form['password'] != 'admin':
+            # error = 'Invalid Credentials. Please try again.'
+        for user in users:
+            if request.form['username'] != user.username or request.form['password'] != user.password:
+                error = 'Invalid Credentials. Please try again.'
+            elif request.form['username'] == user.username and request.form['password'] == user.password:
+                login_session['logged_in'] = True
+                print(login_session)
+                return redirect(url_for('home'))
     return render_template('login.html', error=error)
 
 
