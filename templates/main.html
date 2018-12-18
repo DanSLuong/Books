@@ -37,7 +37,7 @@
                 <a class="nav-link" href="{{url_for('about')}}"> About </a>
             </li>
 
-            {% if login_session == true %}
+            {% if login_session == False %}
             <li class="nav-item">
                 <a class="nav-link" href="{{url_for('login')}}"> Login </a>
             </li>
